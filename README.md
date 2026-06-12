@@ -22,12 +22,13 @@ Each email passes through two reasoning steps:
 
 ## Tech stack
 
-- Python 3.14
+- Python 3.11
 - LangChain — agentic pipeline framework
 - Groq (LLaMA 3.3 70B) — LLM provider
 - python-dotenv — environment variable management
+- Docker — containerisation for portable, cloud-ready deployment
 
-## Setup
+## Setup (local)
 
 1. Clone the repo
 2. Create a virtual environment: `python -m venv venv`
@@ -35,6 +36,19 @@ Each email passes through two reasoning steps:
 4. Install dependencies: `pip install -r requirements.txt`
 5. Add your Groq API key to a `.env` file: `GROQ_API_KEY=your_key_here`
 6. Run: `python main.py`
+
+## Setup (Docker)
+
+The application is fully containerised and can run on any platform that supports Docker, including AWS ECS, Google Cloud Run, and Azure Container Apps.
+
+1. Build the image:
+```bash
+   docker build -t affiliate-agent .
+```
+2. Run the container (using your `.env` file for the API key):
+```bash
+   docker run --env-file .env affiliate-agent
+```
 
 ## Output
 
